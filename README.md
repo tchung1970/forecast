@@ -59,8 +59,8 @@ python3 forecast.py "London"
 # 3-day forecast
 python3 forecast.py --days 3 "Tokyo,JP"
 
-# French language forecast
-python3 forecast.py --lang fr "Paris,FR"
+# Korean language forecast
+python3 forecast.py --lang ko "Seoul,KR"
 ```
 
 ## How It Works
