@@ -11,7 +11,7 @@ A Python-based weather forecast application that provides weather forecasts usin
 - **Enhanced Country Display**: Shows full country names (e.g., "South Korea", "United States") instead of codes
 - **Multi-format Display**: Shows temperatures in both Fahrenheit and Celsius
 - **Multi-Day Forecasts**: Provides detailed daily high/low temperatures and weather conditions (3 days default, up to 5 days maximum)
-- **Multi-language Support**: Get forecasts in different languages
+- **Multi-language Support**: Get forecasts in English and Korean
 - **Flexible API Key Management**: Support for command line, environment file, or environment variable
 
 ## Quick Start
@@ -125,7 +125,7 @@ positional arguments:
 optional arguments:
   -h, --help            show help message
   --days DAYS, -d DAYS  Number of days to forecast (default: 3, max: 5 due to API limit)
-  --lang LANG, -l LANG  Language code (e.g., en, fr, de, es, ru)
+  --lang LANG, -l LANG  Language code (en for English, ko for Korean)
 ```
 
 ## Author

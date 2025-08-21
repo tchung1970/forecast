@@ -699,7 +699,7 @@ Examples:
     parser.add_argument(
         '--lang', '-l',
         default='en',
-        help='Language code (e.g., en, fr, de, es, ru)'
+        help='Language code (en for English, ko for Korean)'
     )
     
     args = parser.parse_args()

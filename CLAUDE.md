@@ -54,5 +54,5 @@ The application integrates with OpenWeatherMap API:
 - Uses geocoding API for intelligent location matching and disambiguation
 - Reverse geocoding for coordinate-based lookups
 - Configurable forecast duration (up to 5 days maximum due to API limitation)
-- Multi-language support
+- Multi-language support (English and Korean)
 - Imperial units (Fahrenheit) by default with Celsius conversion
