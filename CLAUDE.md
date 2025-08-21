@@ -18,8 +18,8 @@ python3 forecast.py
 # Get weather for a specific location
 python3 forecast.py "Los Angeles,CA,US"
 
-# Get multi-day forecast (5 days maximum)
-python3 forecast.py --days 5 "Seoul,KR"
+# Get multi-day forecast (3 days default, 5 days maximum)
+python3 forecast.py --days 3 "Seoul,KR"
 
 # Get weather in Korean
 python3 forecast.py --lang ko "Seoul,KR"

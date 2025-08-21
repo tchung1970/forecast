@@ -48,8 +48,8 @@ python3 forecast.py "Los Angeles,CA,US"
 # Different city (shows multiple options if ambiguous)
 python3 forecast.py "Seoul"
 
-# 5-day forecast (maximum supported)
-python3 forecast.py --days 5 "Seoul,KR"
+# 3-day forecast (default)
+python3 forecast.py --days 3 "Seoul,KR"
 
 # Korean language forecast
 python3 forecast.py --lang ko "Seoul,KR"
@@ -124,7 +124,7 @@ positional arguments:
 
 optional arguments:
   -h, --help            show help message
-  --days DAYS, -d DAYS  Number of days to forecast (default: 5, max: 5 due to API limit)
+  --days DAYS, -d DAYS  Number of days to forecast (default: 3, max: 5 due to API limit)
   --lang LANG, -l LANG  Language code (e.g., en, fr, de, es, ru)
 ```
 

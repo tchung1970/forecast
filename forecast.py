@@ -626,8 +626,8 @@ Examples:
     parser.add_argument(
         '--days', '-d',
         type=int,
-        default=5,
-        help='Number of days to forecast (default: 5, max: 5 due to API limit)'
+        default=3,
+        help='Number of days to forecast (default: 3, max: 5 due to API limit)'
     )
     parser.add_argument(
         '--lang', '-l',
