@@ -80,28 +80,36 @@ Multiple Los Angeless found:
 
 Press Enter to choose the best match (1) or select other location (2-3): 
 
-5-day forecast for Los Angeles, California, United States
-========================================================
+3-day forecast for Los Angeles, California, United States
+=========================================================
 
-Monday, Aug 21     | High: 78°F (26°C) | Low: 65°F (18°C) | Clear Sky
-Tuesday, Aug 22    | High: 80°F (27°C) | Low: 67°F (19°C) | Few Clouds
-Wednesday, Aug 23  | High: 82°F (28°C) | Low: 68°F (20°C) | Scattered Clouds
-Thursday, Aug 24   | High: 79°F (26°C) | Low: 66°F (19°C) | Light Rain
-Friday, Aug 25     | High: 76°F (24°C) | Low: 64°F (18°C) | Partly Cloudy
+Thursday, Aug 21 | High: 94°F (35°C) | Low: 77°F (25°C) | Clear Sky
+Friday, Aug 22   | High: 95°F (35°C) | Low: 78°F (26°C) | Overcast Clouds
+Saturday, Aug 23 | High: 90°F (32°C) | Low: 78°F (25°C) | Clear Sky
 ```
 
 **Korean Language Detection:**
 ```
 $ python3 forecast.py "서울"
 
-5-day forecast for Seoul, South Korea
-======================================
+서울, 대한민국 3일 일기예보
+===========================
 
-Thursday, Aug 21 | High: 92°F (33°C) | Low: 79°F (26°C) | Few Clouds
-Friday, Aug 22   | High: 92°F (33°C) | Low: 77°F (25°C) | Overcast Clouds
-Saturday, Aug 23 | High: 94°F (34°C) | Low: 78°F (26°C) | Few Clouds
-Sunday, Aug 24   | High: 88°F (31°C) | Low: 79°F (26°C) | Clear Sky
-Monday, Aug 25   | High: 89°F (32°C) | Low: 75°F (24°C) | Light Rain
+8월 21일 목요일   | 최고: 33°C (92°F) | 최저: 26°C (78°F) | 맑음
+8월 22일 금요일   | 최고: 33°C (92°F) | 최저: 25°C (77°F) | 흐림
+8월 23일 토요일   | 최고: 34°C (94°F) | 최저: 26°C (78°F) | 구름 조금
+```
+
+**Korean Language Explicit:**
+```
+$ python3 forecast.py --lang ko "Seoul,KR"
+
+서울, 대한민국 3일 일기예보
+===========================
+
+8월 21일 목요일   | 최고: 33°C (92°F) | 최저: 26°C (78°F) | 맑음
+8월 22일 금요일   | 최고: 33°C (92°F) | 최저: 25°C (77°F) | 흐림
+8월 23일 토요일   | 최고: 34°C (94°F) | 최저: 26°C (78°F) | 구름 조금
 ```
 
 ## API Information

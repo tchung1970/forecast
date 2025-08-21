@@ -36,6 +36,8 @@ python3 forecast.py --lang ko "Seoul,KR"
 - **Korean language detection**: Automatically prioritizes Korean locations when Korean characters are detected
 - **Smart location sorting**: Uses "best match" algorithm combining language preference and distance
 - **Enhanced country name display**: Shows full country names instead of codes for better clarity
+- **Auto-Korean localization**: Korean cities automatically use Korean formatting (names, dates, weather descriptions)
+- **Celsius-first display**: Korean formatting shows Celsius first, then Fahrenheit
 - Error handling for network requests and invalid inputs
 - Clean text-based output format with both Fahrenheit and Celsius
 - Configurable forecast length with 3-day default and 5-day maximum
@@ -55,4 +57,5 @@ The application integrates with OpenWeatherMap API:
 - Reverse geocoding for coordinate-based lookups
 - Configurable forecast duration (up to 5 days maximum due to API limitation)
 - Multi-language support (English and Korean)
-- Imperial units (Fahrenheit) by default with Celsius conversion
+- Temperature units: Fahrenheit first for English (92°F (33°C)), Celsius first for Korean (33°C (92°F))
+- Korean weather descriptions: Automatic translation of weather conditions (Clear Sky → 맑음)
