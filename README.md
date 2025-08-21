@@ -9,7 +9,7 @@ A Python-based weather forecast application that provides weather forecasts usin
 - **Interactive Location Selection**: When multiple cities match your search, displays options with intelligent search relevance prioritization
 - **Intelligent Geocoding**: Uses OpenWeatherMap's geocoding API for accurate location matching
 - **Enhanced Country Display**: Shows full country names (e.g., "South Korea", "United States") instead of codes
-- **Multi-format Display**: Shows temperatures in both Fahrenheit and Celsius with perfectly aligned output formatting
+- **Multi-format Display**: Shows temperatures in both Fahrenheit and Celsius with perfectly aligned output formatting in both English and Korean
 - **Multi-Day Forecasts**: Provides detailed daily high/low temperatures and weather conditions (3 days default, up to 5 days maximum)
 - **Multi-language Support**: Get forecasts in English and Korean
 - **Flexible API Key Management**: Support for command line, environment file, or environment variable
@@ -64,7 +64,7 @@ When you search for a location, the application:
 3. **Sorts by Relevance**: Prioritizes exact matches and search term relevance over geographic distance
 4. **Presents Options**: Shows multiple matches when cities have the same name
 5. **Fetches Forecast**: Retrieves weather data for the selected location (3 days default, up to 5 days)
-6. **Formats Display**: Shows daily highs/lows in both °F and °C with perfectly aligned columns
+6. **Formats Display**: Shows daily highs/lows in both °F and °C with perfectly aligned columns in both English and Korean
 
 ### Example Interactive Sessions
 

@@ -40,7 +40,7 @@ python forecast.py --lang ko "Seoul,KR"
 - **Celsius-first display**: Korean formatting shows Celsius first, then Fahrenheit
 - Error handling for network requests and invalid inputs
 - Clean text-based output format with both Fahrenheit and Celsius
-- **Consistent formatting**: All vertical separators are perfectly aligned for clean output display
+- **Consistent formatting**: All vertical separators are perfectly aligned for clean output display in both English and Korean
 - Configurable forecast length with 3-day default and 5-day maximum
 
 ## API Integration
