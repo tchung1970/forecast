@@ -57,7 +57,7 @@ python3 forecast.py "Los Angeles,CA,US"
 python3 forecast.py "London"
 
 # 3-day forecast
-python3 forecast.py --days 3 "Tokyo,JP"
+python3 forecast.py --days 3 "Seoul,KR"
 
 # Korean language forecast
 python3 forecast.py --lang ko "Seoul,KR"
