@@ -138,6 +138,34 @@ def smart_location_sort(geo_data: list, original_location: str, current_lat: flo
         return geo_data, is_korean_input
 
 
+def format_date_korean(dt: datetime) -> str:
+    """Format date in Korean"""
+    korean_days = {
+        'Monday': '월요일',
+        'Tuesday': '화요일', 
+        'Wednesday': '수요일',
+        'Thursday': '목요일',
+        'Friday': '금요일',
+        'Saturday': '토요일',
+        'Sunday': '일요일'
+    }
+    
+    korean_months = {
+        'Jan': '1월', 'Feb': '2월', 'Mar': '3월', 'Apr': '4월',
+        'May': '5월', 'Jun': '6월', 'Jul': '7월', 'Aug': '8월',
+        'Sep': '9월', 'Oct': '10월', 'Nov': '11월', 'Dec': '12월'
+    }
+    
+    day_name = dt.strftime('%A')
+    month_abbr = dt.strftime('%b')
+    day_num = dt.strftime('%d')
+    
+    korean_day = korean_days.get(day_name, day_name)
+    korean_month = korean_months.get(month_abbr, month_abbr)
+    
+    return f"{korean_month} {day_num}일 {korean_day}"
+
+
 def prompt_for_location() -> str:
     """Prompt user for location input"""
     try:
@@ -503,8 +531,13 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
             # If geocoding fails, just continue with original result
             pass
         
-        forecast_text = f"\n5-day forecast for {location_display}\n"
-        forecast_text += "=" * (len(location_display) + 20) + "\n\n"
+        # Format header and content based on language
+        if lang == 'ko':
+            forecast_text = f"\n{location_display} 5일 일기예보\n"
+            forecast_text += "=" * (len(location_display.encode('utf-8')) + 15) + "\n\n"
+        else:
+            forecast_text = f"\n5-day forecast for {location_display}\n"
+            forecast_text += "=" * (len(location_display) + 20) + "\n\n"
         
         # Group forecasts by day and get daily highs/lows
         daily_forecasts = {}
@@ -512,7 +545,12 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
         for item in data['list']:
             dt = datetime.fromtimestamp(item['dt'])
             date_key = dt.strftime('%Y-%m-%d')
-            date_str = dt.strftime('%A, %b %d')
+            
+            # Format date based on language
+            if lang == 'ko':
+                date_str = format_date_korean(dt)
+            else:
+                date_str = dt.strftime('%A, %b %d')
             
             temp = item['main']['temp']
             desc = item['weather'][0]['description'].title()
@@ -540,7 +578,11 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
             high_c = round((day['high'] - 32) * 5/9)
             low_c = round((day['low'] - 32) * 5/9)
             
-            forecast_text += f"{day['date_str']:15} | High: {high_f:2}°F ({high_c:2}°C) | Low: {low_f:2}°F ({low_c:2}°C) | {day['desc']}\n"
+            # Format output based on language
+            if lang == 'ko':
+                forecast_text += f"{day['date_str']:12} | 최고: {high_f:2}°F ({high_c:2}°C) | 최저: {low_f:2}°F ({low_c:2}°C) | {day['desc']}\n"
+            else:
+                forecast_text += f"{day['date_str']:15} | High: {high_f:2}°F ({high_c:2}°C) | Low: {low_f:2}°F ({low_c:2}°C) | {day['desc']}\n"
             day_count += 1
         
         return forecast_text
