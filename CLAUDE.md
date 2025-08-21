@@ -44,7 +44,7 @@ python3 forecast.py --lang ko "Seoul,KR"
 The application integrates with OpenWeatherMap API:
 - Base URL: http://api.openweathermap.org/data/2.5/forecast
 - Requires free API key from openweathermap.org 
-- Free plan limits: 60 API calls/minute, 1,000,000 calls/month
+- Free plan limits: 60 API calls/minute, 1,000,000 calls/month, 5-day forecast maximum
 - Includes: Current weather API, 3-hour forecast for 5 days API, Weather Maps, Air Pollution API, Geocoding API
 - API key can be provided via:
   - ~/.env file: `OPENWEATHERMAP_API_KEY=your_key`
@@ -52,6 +52,6 @@ The application integrates with OpenWeatherMap API:
 - Supports location-based queries in "city,state,country" format
 - Uses geocoding API for intelligent location matching and disambiguation
 - Reverse geocoding for coordinate-based lookups
-- Configurable forecast duration (up to 5 days)
+- Configurable forecast duration (up to 5 days maximum due to API limitation)
 - Multi-language support
 - Imperial units (Fahrenheit) by default with Celsius conversion

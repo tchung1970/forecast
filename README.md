@@ -107,9 +107,9 @@ Monday, Aug 25   | High: 89°F (32°C) | Low: 75°F (24°C) | Light Rain
 ## API Information
 
 - **Service**: OpenWeatherMap API
-- **Free Tier Limits**: 60 calls/minute, 1,000,000 calls/month
+- **Free Tier Limits**: 60 calls/minute, 1,000,000 calls/month, 5-day forecast maximum
 - **APIs Used**: 
-  - 5-day/3-hour forecast
+  - 5-day/3-hour forecast (limited to 5 days maximum)
   - Geocoding for location search
   - Reverse geocoding for coordinates
 - **Default Units**: Imperial (Fahrenheit) with Celsius conversion
@@ -124,7 +124,7 @@ positional arguments:
 
 optional arguments:
   -h, --help            show help message
-  --days DAYS, -d DAYS  Number of days to forecast (default: 5)
+  --days DAYS, -d DAYS  Number of days to forecast (default: 5, max: 5 due to API limit)
   --lang LANG, -l LANG  Language code (e.g., en, fr, de, es, ru)
 ```
 
