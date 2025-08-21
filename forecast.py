@@ -638,6 +638,15 @@ Examples:
     args = parser.parse_args()
     
     try:
+        # Validate days parameter
+        if args.days > 5:
+            print(f"Sorry, the maximum forecast length is 5 days due to OpenWeatherMap API limitations. You requested {args.days} days.")
+            sys.exit(1)
+        
+        if args.days < 1:
+            print("Sorry, the minimum forecast length is 1 day.")
+            sys.exit(1)
+        
         # Load environment variables from ~/.env
         env_vars = load_env_file()
         
