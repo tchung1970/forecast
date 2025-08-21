@@ -571,7 +571,7 @@ def main():
 Examples:
   %(prog)s                              # Prompts for location
   %(prog)s "Los Angeles,CA,US"          # Los Angeles weather  
-  %(prog)s "Seoul,KR" --days 3          # Seoul 3-day forecast
+  %(prog)s "Seoul,KR" --days 5          # Seoul 5-day forecast
   %(prog)s "Seoul,KR" --lang ko         # Seoul weather in Korean
         """)
     

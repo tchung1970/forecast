@@ -19,7 +19,7 @@ python3 forecast.py
 python3 forecast.py "Los Angeles,CA,US"
 
 # Get multi-day forecast
-python3 forecast.py --days 3 "Seoul,KR"
+python3 forecast.py --days 5 "Seoul,KR"
 
 # Get weather in a different language
 python3 forecast.py --lang ko "Seoul,KR"
