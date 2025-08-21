@@ -328,6 +328,10 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
         country = data['city']['country']
         coords = data['city']['coord']
         
+        # Auto-use Korean formatting for Korean locations (only if language not explicitly set)
+        if country == 'KR' and lang == 'en' and '--lang' not in sys.argv and '-l' not in sys.argv:
+            lang = 'ko'
+        
         # Build location display with full country names
         country_names = {
             'US': 'United States',
