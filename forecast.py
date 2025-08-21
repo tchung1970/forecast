@@ -344,6 +344,25 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
         if country == 'KR' and lang == 'en' and '--lang' not in sys.argv and '-l' not in sys.argv:
             lang = 'ko'
         
+        # Korean city and country name mappings
+        korean_cities = {
+            'Seoul': '서울',
+            'Busan': '부산',
+            'Incheon': '인천',
+            'Daegu': '대구',
+            'Daejeon': '대전',
+            'Gwangju': '광주',
+            'Ulsan': '울산',
+            'Suwon': '수원',
+            'Goyang': '고양',
+            'Yongin': '용인',
+            'Seongnam': '성남'
+        }
+        
+        korean_countries = {
+            'KR': '대한민국'
+        }
+        
         # Build location display with full country names
         country_names = {
             'US': 'United States',
@@ -444,7 +463,13 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
         except:
             pass
         
-        location_display = f"{city_name}{state_info}, {country_full}"
+        # Use Korean names when Korean formatting is active
+        if lang == 'ko':
+            korean_city = korean_cities.get(city_name, city_name)
+            korean_country = korean_countries.get(country, country_full)
+            location_display = f"{korean_city}, {korean_country}"
+        else:
+            location_display = f"{city_name}{state_info}, {country_full}"
         coord_display = f"(Lat: {coords['lat']:.2f}, Lon: {coords['lon']:.2f})"
         
         # Show multiple location options if available (for locations that don't 404)
