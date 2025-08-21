@@ -534,7 +534,7 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
         # Format header and content based on language
         if lang == 'ko':
             forecast_text = f"\n{location_display} {days}일 일기예보\n"
-            forecast_text += "=" * (len(location_display.encode('utf-8')) + len(str(days)) + 10) + "\n\n"
+            forecast_text += "=" * (len(location_display) + len(str(days)) + 8) + "\n\n"
         else:
             forecast_text = f"\n{days}-day forecast for {location_display}\n"
             forecast_text += "=" * (len(location_display) + len(str(days)) + 20) + "\n\n"
