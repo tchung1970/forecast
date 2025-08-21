@@ -51,7 +51,7 @@ A Python-based weather forecast application that provides 5-day weather forecast
 python3 forecast.py
 
 # Specific location
-python3 forecast.py "New York,NY,US"
+python3 forecast.py "Los Angeles,CA,US"
 
 # Different city (shows multiple options if ambiguous)
 python3 forecast.py "London"
