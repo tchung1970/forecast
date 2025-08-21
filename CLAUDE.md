@@ -16,13 +16,13 @@ echo "OPENWEATHERMAP_API_KEY=your_api_key_here" >> ~/.env
 python3 forecast.py
 
 # Get weather for a specific location
-python3 forecast.py "New York,NY,US"
+python3 forecast.py "Los Angeles,CA,US"
 
 # Get multi-day forecast
-python3 forecast.py --days 3 "London,GB"
+python3 forecast.py --days 3 "Seoul,KR"
 
 # Get weather in a different language
-python3 forecast.py --lang fr "Paris,FR"
+python3 forecast.py --lang ko "Seoul,KR"
 
 # Override API key via command line
 python3 forecast.py --api-key YOUR_KEY

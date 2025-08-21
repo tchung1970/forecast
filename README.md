@@ -54,7 +54,7 @@ python3 forecast.py
 python3 forecast.py "Los Angeles,CA,US"
 
 # Different city (shows multiple options if ambiguous)
-python3 forecast.py "London"
+python3 forecast.py "Seoul"
 
 # 3-day forecast
 python3 forecast.py --days 3 "Seoul,KR"
@@ -128,7 +128,7 @@ Monday, Aug 25   | High: 89°F (32°C) | Low: 75°F (24°C) | Light Rain
 usage: forecast.py [-h] [--days DAYS] [--lang LANG] [--api-key API_KEY] [location]
 
 positional arguments:
-  location              Location (city,state,country format, e.g., "New York,NY,US")
+  location              Location (city,state,country format, e.g., "Los Angeles,CA,US")
 
 optional arguments:
   -h, --help            show help message
