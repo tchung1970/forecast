@@ -363,6 +363,25 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
             'KR': '대한민국'
         }
         
+        # Korean weather descriptions
+        korean_weather = {
+            'clear sky': '맑음',
+            'few clouds': '구름 조금',
+            'scattered clouds': '구름 많음', 
+            'broken clouds': '흐림',
+            'overcast clouds': '흐림',
+            'light rain': '가벼운 비',
+            'moderate rain': '비',
+            'heavy rain': '폭우',
+            'thunderstorm': '뇌우',
+            'snow': '눈',
+            'light snow': '가벼운 눈',
+            'heavy snow': '폭설',
+            'mist': '안개',
+            'fog': '짙은 안개',
+            'haze': '실안개'
+        }
+        
         # Build location display with full country names
         country_names = {
             'US': 'United States',
@@ -598,6 +617,11 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
             temp = item['main']['temp']
             desc = item['weather'][0]['description'].title()
             
+            # Use Korean weather description if Korean formatting
+            if lang == 'ko':
+                desc_lower = item['weather'][0]['description'].lower()
+                desc = korean_weather.get(desc_lower, desc)
+            
             if date_key not in daily_forecasts:
                 daily_forecasts[date_key] = {
                     'date_str': date_str,
@@ -623,7 +647,7 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
             
             # Format output based on language
             if lang == 'ko':
-                forecast_text += f"{day['date_str']:12} | 최고: {high_f:2}°F ({high_c:2}°C) | 최저: {low_f:2}°F ({low_c:2}°C) | {day['desc']}\n"
+                forecast_text += f"{day['date_str']:12} | 최고: {high_c:2}°C ({high_f:2}°F) | 최저: {low_c:2}°C ({low_f:2}°F) | {day['desc']}\n"
             else:
                 forecast_text += f"{day['date_str']:15} | High: {high_f:2}°F ({high_c:2}°C) | Low: {low_f:2}°F ({low_c:2}°C) | {day['desc']}\n"
             day_count += 1
