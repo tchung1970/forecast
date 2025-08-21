@@ -39,7 +39,9 @@ chmod +x forecast.py
 - Supports city,state,country location format with intelligent geocoding
 - Interactive location selection when multiple matches found
 - IP geolocation fallback for current location detection
-- Distance-based sorting of location options (nearest first)
+- **Korean language detection**: Automatically prioritizes Korean locations when Korean characters are detected
+- **Smart location sorting**: Uses "best match" algorithm combining language preference and distance
+- **Enhanced country name display**: Shows full country names instead of codes for better clarity
 - Error handling for network requests and invalid inputs
 - Clean text-based output format with both Fahrenheit and Celsius
 

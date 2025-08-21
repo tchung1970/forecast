@@ -5,8 +5,10 @@ A Python-based weather forecast application that provides 5-day weather forecast
 ## Features
 
 - **Smart Location Detection**: Automatically detects your current location using IP geolocation
-- **Interactive Location Selection**: When multiple cities match your search, displays options sorted by distance
+- **Korean Language Detection**: Automatically prioritizes Korean locations when Korean characters are detected (e.g., "서울" → Seoul, South Korea)
+- **Interactive Location Selection**: When multiple cities match your search, displays options with intelligent "best match" sorting
 - **Intelligent Geocoding**: Uses OpenWeatherMap's geocoding API for accurate location matching
+- **Enhanced Country Display**: Shows full country names (e.g., "South Korea", "Pakistan") instead of codes
 - **Multi-format Display**: Shows temperatures in both Fahrenheit and Celsius
 - **5-Day Forecasts**: Provides detailed daily high/low temperatures and weather conditions
 - **Multi-language Support**: Get forecasts in different languages
@@ -75,18 +77,19 @@ When you search for a location, the application:
 5. **Fetches Forecast**: Retrieves 5-day weather data for the selected location
 6. **Formats Display**: Shows daily highs/lows in both °F and °C
 
-### Example Interactive Session
+### Example Interactive Sessions
 
+**English Location Search:**
 ```
 $ python3 forecast.py
 Enter location (or press Enter for current location): Los Angeles
 
 Multiple Los Angeless found:
-1. Los Angeles, California, United States (nearest)
+1. Los Angeles, California, United States (best match)
 2. Los Angeles, Chiriquí, Panama
 3. Los Angeles, Sucre, Colombia
 
-Press Enter to choose the nearest city (1) or select other location (2-3): 
+Press Enter to choose the best match (1) or select other location (2-3): 
 
 5-day forecast for Los Angeles, California, United States
 ========================================================
@@ -96,6 +99,20 @@ Tuesday, Aug 22    | High: 80°F (27°C) | Low: 67°F (19°C) | Few Clouds
 Wednesday, Aug 23  | High: 82°F (28°C) | Low: 68°F (20°C) | Scattered Clouds
 Thursday, Aug 24   | High: 79°F (26°C) | Low: 66°F (19°C) | Light Rain
 Friday, Aug 25     | High: 76°F (24°C) | Low: 64°F (18°C) | Partly Cloudy
+```
+
+**Korean Language Detection:**
+```
+$ python3 forecast.py "서울"
+
+5-day forecast for Seoul, South Korea
+======================================
+
+Thursday, Aug 21 | High: 92°F (33°C) | Low: 79°F (26°C) | Few Clouds
+Friday, Aug 22   | High: 92°F (33°C) | Low: 77°F (25°C) | Overcast Clouds
+Saturday, Aug 23 | High: 94°F (34°C) | Low: 78°F (26°C) | Few Clouds
+Sunday, Aug 24   | High: 88°F (31°C) | Low: 79°F (26°C) | Clear Sky
+Monday, Aug 25   | High: 89°F (32°C) | Low: 75°F (24°C) | Light Rain
 ```
 
 ## API Information

@@ -101,6 +101,42 @@ def calculate_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> fl
     return c * r
 
 
+def has_korean_characters(text: str) -> bool:
+    """Check if text contains Korean characters"""
+    for char in text:
+        if '\uac00' <= char <= '\ud7af':  # Hangul syllables
+            return True
+        if '\u3130' <= char <= '\u318f':  # Hangul compatibility jamo
+            return True
+        if '\ua960' <= char <= '\ua97f':  # Hangul jamo extended-A
+            return True
+        if '\ud7b0' <= char <= '\ud7ff':  # Hangul jamo extended-B
+            return True
+    return False
+
+
+def smart_location_sort(geo_data: list, original_location: str, current_lat: float, current_lon: float) -> tuple:
+    """Sort locations intelligently based on input language and distance"""
+    # Calculate distances for all locations
+    for loc in geo_data:
+        loc['distance'] = calculate_distance(current_lat, current_lon, loc['lat'], loc['lon'])
+    
+    # Check if input contains Korean characters
+    is_korean_input = has_korean_characters(original_location)
+    if is_korean_input:
+        # Only return Korean locations (country code 'KR')
+        korean_locs = [loc for loc in geo_data if loc['country'] == 'KR']
+        
+        # Sort Korean locations by distance
+        korean_locs.sort(key=lambda x: x['distance'])
+        
+        return korean_locs, is_korean_input
+    else:
+        # Default sorting by distance only
+        geo_data.sort(key=lambda x: x['distance'])
+        return geo_data, is_korean_input
+
+
 def prompt_for_location() -> str:
     """Prompt user for location input"""
     try:
@@ -156,23 +192,15 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
         # Sort by distance from current location and use the nearest one
         if len(geo_data) > 1:
             current_lat, current_lon = get_current_coordinates()
-            for loc in geo_data:
-                loc['distance'] = calculate_distance(current_lat, current_lon, loc['lat'], loc['lon'])
-            geo_data.sort(key=lambda x: x['distance'])
+            geo_data, is_korean_input = smart_location_sort(geo_data, original_location, current_lat, current_lon)
+        else:
+            is_korean_input = has_korean_characters(original_location)
             
-            # Use coordinates of the nearest location
-            nearest_loc = geo_data[0]
-            params = {
+        # Use coordinates of the nearest location
+        nearest_loc = geo_data[0]
+        params = {
                 'lat': nearest_loc['lat'],
                 'lon': nearest_loc['lon'],
-                'appid': api_key,
-                'units': 'imperial',
-                'lang': lang
-            }
-        else:
-            # Fallback to original method
-            params = {
-                'q': location,
                 'appid': api_key,
                 'units': 'imperial',
                 'lang': lang
@@ -203,9 +231,9 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
                 # Sort by distance from current location
                 if len(geo_data) > 1:
                     current_lat, current_lon = get_current_coordinates()
-                    for loc in geo_data:
-                        loc['distance'] = calculate_distance(current_lat, current_lon, loc['lat'], loc['lon'])
-                    geo_data.sort(key=lambda x: x['distance'])
+                    geo_data, is_korean_input = smart_location_sort(geo_data, location, current_lat, current_lon)
+                else:
+                    is_korean_input = has_korean_characters(location)
                 
                 if not geo_data:
                     return f"Location '{location}' not found. Please try a more specific location (e.g., 'Los Angeles, CA' or 'London, UK')."
@@ -230,7 +258,10 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
                     
                     print()
                     try:
-                        choice = input("Select location (1-3) or press Enter for #1: ").strip()
+                        if is_korean_input:
+                            choice = input("Select location (1-3) or press Enter for #1: ").strip()
+                        else:
+                            choice = input("Select location (1-3) or press Enter for #1: ").strip()
                         if choice == '' or choice == '1':
                             selected_loc = geo_data[0]
                         elif choice == '2' and len(geo_data) > 1:
@@ -286,7 +317,72 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
             'IT': 'Italy',
             'NL': 'Netherlands',
             'PA': 'Panama',
-            'CO': 'Colombia'
+            'CO': 'Colombia',
+            'SY': 'Syria',
+            'PK': 'Pakistan',
+            'RU': 'Russia',
+            'UA': 'Ukraine',
+            'PL': 'Poland',
+            'TR': 'Turkey',
+            'EG': 'Egypt',
+            'SA': 'Saudi Arabia',
+            'AE': 'United Arab Emirates',
+            'IL': 'Israel',
+            'IR': 'Iran',
+            'IQ': 'Iraq',
+            'JO': 'Jordan',
+            'LB': 'Lebanon',
+            'SG': 'Singapore',
+            'TH': 'Thailand',
+            'VN': 'Vietnam',
+            'MY': 'Malaysia',
+            'ID': 'Indonesia',
+            'PH': 'Philippines',
+            'BD': 'Bangladesh',
+            'LK': 'Sri Lanka',
+            'NP': 'Nepal',
+            'MM': 'Myanmar',
+            'KH': 'Cambodia',
+            'LA': 'Laos',
+            'MN': 'Mongolia',
+            'KZ': 'Kazakhstan',
+            'UZ': 'Uzbekistan',
+            'KG': 'Kyrgyzstan',
+            'TJ': 'Tajikistan',
+            'TM': 'Turkmenistan',
+            'AF': 'Afghanistan',
+            'ZA': 'South Africa',
+            'NG': 'Nigeria',
+            'KE': 'Kenya',
+            'ET': 'Ethiopia',
+            'GH': 'Ghana',
+            'TZ': 'Tanzania',
+            'UG': 'Uganda',
+            'MA': 'Morocco',
+            'DZ': 'Algeria',
+            'TN': 'Tunisia',
+            'LY': 'Libya',
+            'SD': 'Sudan',
+            'AR': 'Argentina',
+            'CL': 'Chile',
+            'PE': 'Peru',
+            'VE': 'Venezuela',
+            'UY': 'Uruguay',
+            'PY': 'Paraguay',
+            'BO': 'Bolivia',
+            'EC': 'Ecuador',
+            'CR': 'Costa Rica',
+            'GT': 'Guatemala',
+            'HN': 'Honduras',
+            'NI': 'Nicaragua',
+            'SV': 'El Salvador',
+            'BZ': 'Belize',
+            'CU': 'Cuba',
+            'JM': 'Jamaica',
+            'HT': 'Haiti',
+            'DO': 'Dominican Republic',
+            'PR': 'Puerto Rico',
+            'TT': 'Trinidad and Tobago'
         }
         
         country_full = country_names.get(country, country)
@@ -317,14 +413,17 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
             # Sort by distance from current location
             if len(geo_data) > 1:
                 current_lat, current_lon = get_current_coordinates()
-                for loc in geo_data:
-                    loc['distance'] = calculate_distance(current_lat, current_lon, loc['lat'], loc['lon'])
-                geo_data.sort(key=lambda x: x['distance'])
+                geo_data, is_korean_input = smart_location_sort(geo_data, search_location, current_lat, current_lon)
+            else:
+                is_korean_input = has_korean_characters(search_location)
                 
             # Only show options if we have multiple locations AND the current result might not be the intended one
             if len(geo_data) > 1:
                 print(f"\nMultiple {city_name}s found:")
-                print(f"1. {location_display} (nearest)")
+                if is_korean_input:
+                    print(f"1. {location_display}")
+                else:
+                    print(f"1. {location_display} (best match)")
                 
                 displayed_options = 1
                 for i, loc in enumerate(geo_data[:3]):
@@ -349,7 +448,10 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
                 if displayed_options > 1:
                     print()
                     try:
-                        choice = input("Press Enter to choose the nearest city (1) or select other location (2-3): ").strip()
+                        if is_korean_input:
+                            choice = input("Press Enter to choose option (1) or select other location (2-3): ").strip()
+                        else:
+                            choice = input("Press Enter to choose the best match (1) or select other location (2-3): ").strip()
                         if choice in ['2', '3']:
                             choice_idx = int(choice) - 2  # Adjust for skipped current location
                             if choice_idx < len(geo_data):
