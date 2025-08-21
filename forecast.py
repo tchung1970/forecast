@@ -649,7 +649,7 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
             if lang == 'ko':
                 forecast_text += f"{day['date_str']:12} | 최고: {high_c:2}°C ({high_f:2}°F) | 최저: {low_c:2}°C ({low_f:2}°F) | {day['desc']}\n"
             else:
-                forecast_text += f"{day['date_str']:<16} | High: {high_f:2}°F ({high_c:2}°C) | Low: {low_f:2}°F ({low_c:2}°C) | {day['desc']}\n"
+                forecast_text += f"{day['date_str']:<17} | High: {high_f:2}°F ({high_c:2}°C) | Low: {low_f:2}°F ({low_c:2}°C) | {day['desc']}\n"
             day_count += 1
         
         return forecast_text
