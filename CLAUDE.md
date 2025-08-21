@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Python-based weather forecast application that uses the OpenWeatherMap API to provide weather information. The main script is `forecast.py` which provides a command-line interface for getting weather forecasts.
+This is a Python-based weather forecast application that uses the OpenWeatherMap API to provide weather information. The main script is `forecast.py` which provides a command-line interface for getting weather forecasts (3 days default, up to 5 days maximum).
 
 ## Development Commands
 
@@ -38,6 +38,7 @@ python3 forecast.py --lang ko "Seoul,KR"
 - **Enhanced country name display**: Shows full country names instead of codes for better clarity
 - Error handling for network requests and invalid inputs
 - Clean text-based output format with both Fahrenheit and Celsius
+- Configurable forecast length with 3-day default and 5-day maximum
 
 ## API Integration
 

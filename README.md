@@ -1,6 +1,6 @@
 # Weather Forecast
 
-A Python-based weather forecast application that provides 5-day weather forecasts using the OpenWeatherMap API with intelligent location selection and interactive user interface.
+A Python-based weather forecast application that provides up to 5-day weather forecasts using the OpenWeatherMap API with intelligent location selection and interactive user interface.
 
 ## Features
 
@@ -10,7 +10,7 @@ A Python-based weather forecast application that provides 5-day weather forecast
 - **Intelligent Geocoding**: Uses OpenWeatherMap's geocoding API for accurate location matching
 - **Enhanced Country Display**: Shows full country names (e.g., "South Korea", "United States") instead of codes
 - **Multi-format Display**: Shows temperatures in both Fahrenheit and Celsius
-- **5-Day Forecasts**: Provides detailed daily high/low temperatures and weather conditions
+- **Multi-Day Forecasts**: Provides detailed daily high/low temperatures and weather conditions (3 days default, up to 5 days maximum)
 - **Multi-language Support**: Get forecasts in different languages
 - **Flexible API Key Management**: Support for command line, environment file, or environment variable
 
@@ -63,7 +63,7 @@ When you search for a location, the application:
 2. **Searches for Matches**: Queries OpenWeatherMap's geocoding API for your search term
 3. **Sorts by Distance**: Orders results by proximity to your current location
 4. **Presents Options**: Shows multiple matches when cities have the same name
-5. **Fetches Forecast**: Retrieves 5-day weather data for the selected location
+5. **Fetches Forecast**: Retrieves weather data for the selected location (3 days default, up to 5 days)
 6. **Formats Display**: Shows daily highs/lows in both °F and °C
 
 ### Example Interactive Sessions
