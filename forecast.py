@@ -533,11 +533,11 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
         
         # Format header and content based on language
         if lang == 'ko':
-            forecast_text = f"\n{location_display} 5일 일기예보\n"
-            forecast_text += "=" * (len(location_display.encode('utf-8')) + 15) + "\n\n"
+            forecast_text = f"\n{location_display} {days}일 일기예보\n"
+            forecast_text += "=" * (len(location_display.encode('utf-8')) + len(str(days)) + 10) + "\n\n"
         else:
-            forecast_text = f"\n5-day forecast for {location_display}\n"
-            forecast_text += "=" * (len(location_display) + 20) + "\n\n"
+            forecast_text = f"\n{days}-day forecast for {location_display}\n"
+            forecast_text += "=" * (len(location_display) + len(str(days)) + 20) + "\n\n"
         
         # Group forecasts by day and get daily highs/lows
         daily_forecasts = {}
@@ -566,10 +566,10 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
                 daily_forecasts[date_key]['high'] = max(daily_forecasts[date_key]['high'], temp)
                 daily_forecasts[date_key]['low'] = min(daily_forecasts[date_key]['low'], temp)
         
-        # Display up to 5 days
+        # Display up to requested number of days
         day_count = 0
         for date_key in sorted(daily_forecasts.keys()):
-            if day_count >= 5:
+            if day_count >= days:
                 break
                 
             day = daily_forecasts[date_key]
