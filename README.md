@@ -123,7 +123,7 @@ Monday, Aug 25   | High: 89°F (32°C) | Low: 75°F (24°C) | Light Rain
 ## Command Line Options
 
 ```
-usage: forecast.py [-h] [--days DAYS] [--lang LANG] [--api-key API_KEY] [location]
+usage: forecast.py [-h] [--days DAYS] [--lang LANG] [location]
 
 positional arguments:
   location              Location (city,state,country format, e.g., "Los Angeles,CA,US")
@@ -132,8 +132,6 @@ optional arguments:
   -h, --help            show help message
   --days DAYS, -d DAYS  Number of days to forecast (default: 5)
   --lang LANG, -l LANG  Language code (e.g., en, fr, de, es, ru)
-  --api-key API_KEY, -k API_KEY
-                        OpenWeatherMap API key
 ```
 
 ## Author

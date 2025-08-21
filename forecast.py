@@ -13,7 +13,7 @@
 # 7. Fetches 5-day weather forecast data from OpenWeatherMap API
 # 8. Displays formatted forecast with daily high/low temperatures in F and C
 # 9. Supports multiple languages and configurable forecast duration
-# 10. Handles API key from command line, environment file, or environment variable
+# 10. Handles API key from environment file or environment variable
 
 """
 Weather forecast script using OpenWeatherMap API
@@ -570,16 +570,16 @@ def main():
         epilog="""
 Examples:
   %(prog)s                              # Prompts for location
-  %(prog)s "New York,NY,US"             # New York weather  
-  %(prog)s "Paris,FR" --days 3          # Paris 3-day forecast
-  %(prog)s "London,GB" --lang fr        # London weather in French
+  %(prog)s "Los Angeles,CA,US"          # Los Angeles weather  
+  %(prog)s "Seoul,KR" --days 3          # Seoul 3-day forecast
+  %(prog)s "Seoul,KR" --lang ko         # Seoul weather in Korean
         """)
     
     parser.add_argument(
         'location', 
         nargs='?', 
         default=None,
-        help='Location (city,state,country format, e.g., "New York,NY,US") - prompts if not provided'
+        help='Location (city,state,country format, e.g., "Los Angeles,CA,US") - prompts if not provided'
     )
     parser.add_argument(
         '--days', '-d',
@@ -592,10 +592,6 @@ Examples:
         default='en',
         help='Language code (e.g., en, fr, de, es, ru)'
     )
-    parser.add_argument(
-        '--api-key', '-k',
-        help='OpenWeatherMap API key (can also be set in ~/.env as OPENWEATHERMAP_API_KEY) - Free: 60 calls/min, 1M calls/month'
-    )
     
     args = parser.parse_args()
     
@@ -603,9 +599,8 @@ Examples:
         # Load environment variables from ~/.env
         env_vars = load_env_file()
         
-        # Get API key from command line, environment file, or environment variable
-        api_key = (args.api_key or 
-                  env_vars.get('OPENWEATHERMAP_API_KEY') or 
+        # Get API key from environment file or environment variable
+        api_key = (env_vars.get('OPENWEATHERMAP_API_KEY') or 
                   os.getenv('OPENWEATHERMAP_API_KEY') or 
                   "demo_key")
         
