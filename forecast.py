@@ -6,13 +6,14 @@
 # This script provides a weather forecast application that:
 # 1. Accepts location input from user (command line or interactive prompt)
 # 2. Uses IP geolocation to determine current location as fallback
-# 3. Calls OpenWeatherMap API to get geocoding data for location matching
-# 4. Presents multiple location options when ambiguous searches occur
-# 5. Allows user to select from nearest cities based on distance calculation
-# 6. Fetches 5-day weather forecast data from OpenWeatherMap API
-# 7. Displays formatted forecast with daily high/low temperatures in F and C
-# 8. Supports multiple languages and configurable forecast duration
-# 9. Handles API key from command line, environment file, or environment variable
+# 3. Detects Korean characters in input and prioritizes Korean locations
+# 4. Calls OpenWeatherMap API to get geocoding data for location matching
+# 5. Presents multiple location options with intelligent "best match" sorting
+# 6. Shows full country names instead of codes for better clarity
+# 7. Fetches 5-day weather forecast data from OpenWeatherMap API
+# 8. Displays formatted forecast with daily high/low temperatures in F and C
+# 9. Supports multiple languages and configurable forecast duration
+# 10. Handles API key from command line, environment file, or environment variable
 
 """
 Weather forecast script using OpenWeatherMap API
