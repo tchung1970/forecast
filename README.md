@@ -6,10 +6,10 @@ A Python-based weather forecast application that provides weather forecasts usin
 
 - **Smart Location Detection**: Automatically detects your current location using IP geolocation
 - **Korean Language Detection**: Automatically prioritizes Korean locations when Korean characters are detected (e.g., "서울" → Seoul, South Korea)
-- **Interactive Location Selection**: When multiple cities match your search, displays options with intelligent "best match" sorting
+- **Interactive Location Selection**: When multiple cities match your search, displays options with intelligent search relevance prioritization
 - **Intelligent Geocoding**: Uses OpenWeatherMap's geocoding API for accurate location matching
 - **Enhanced Country Display**: Shows full country names (e.g., "South Korea", "United States") instead of codes
-- **Multi-format Display**: Shows temperatures in both Fahrenheit and Celsius
+- **Multi-format Display**: Shows temperatures in both Fahrenheit and Celsius with perfectly aligned output formatting
 - **Multi-Day Forecasts**: Provides detailed daily high/low temperatures and weather conditions (3 days default, up to 5 days maximum)
 - **Multi-language Support**: Get forecasts in English and Korean
 - **Flexible API Key Management**: Support for command line, environment file, or environment variable
@@ -61,10 +61,10 @@ When you search for a location, the application:
 
 1. **Detects Your Location**: Uses IP geolocation to determine your current position
 2. **Searches for Matches**: Queries OpenWeatherMap's geocoding API for your search term
-3. **Sorts by Distance**: Orders results by proximity to your current location
+3. **Sorts by Relevance**: Prioritizes exact matches and search term relevance over geographic distance
 4. **Presents Options**: Shows multiple matches when cities have the same name
 5. **Fetches Forecast**: Retrieves weather data for the selected location (3 days default, up to 5 days)
-6. **Formats Display**: Shows daily highs/lows in both °F and °C
+6. **Formats Display**: Shows daily highs/lows in both °F and °C with perfectly aligned columns
 
 ### Example Interactive Sessions
 
@@ -83,9 +83,9 @@ Press Enter to choose the best match (1) or select other location (2-3):
 3-day forecast for Los Angeles, California, United States
 =========================================================
 
-Thursday, Aug 21 | High: 94°F (35°C) | Low: 77°F (25°C) | Clear Sky
-Friday, Aug 22   | High: 95°F (35°C) | Low: 78°F (26°C) | Overcast Clouds
-Saturday, Aug 23 | High: 90°F (32°C) | Low: 78°F (25°C) | Clear Sky
+Thursday, Aug 21 | High:  94°F (35°C) | Low:  77°F (25°C) | Clear Sky
+Friday, Aug 22   | High:  95°F (35°C) | Low:  78°F (26°C) | Overcast Clouds
+Saturday, Aug 23 | High:  90°F (32°C) | Low:  78°F (25°C) | Clear Sky
 ```
 
 **Korean Language Detection:**

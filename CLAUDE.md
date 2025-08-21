@@ -34,12 +34,13 @@ python forecast.py --lang ko "Seoul,KR"
 - Interactive location selection when multiple matches found
 - IP geolocation fallback for current location detection
 - **Korean language detection**: Automatically prioritizes Korean locations when Korean characters are detected
-- **Smart location sorting**: Uses "best match" algorithm combining language preference and distance
+- **Smart location sorting**: Prioritizes search term relevance over geographic distance for better location matching
 - **Enhanced country name display**: Shows full country names instead of codes for better clarity
 - **Auto-Korean localization**: Korean cities automatically use Korean formatting (names, dates, weather descriptions)
 - **Celsius-first display**: Korean formatting shows Celsius first, then Fahrenheit
 - Error handling for network requests and invalid inputs
 - Clean text-based output format with both Fahrenheit and Celsius
+- **Consistent formatting**: All vertical separators are perfectly aligned for clean output display
 - Configurable forecast length with 3-day default and 5-day maximum
 
 ## API Integration

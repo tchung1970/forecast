@@ -117,7 +117,7 @@ def has_korean_characters(text: str) -> bool:
 
 
 def smart_location_sort(geo_data: list, original_location: str, current_lat: float, current_lon: float) -> tuple:
-    """Sort locations intelligently based on input language and distance"""
+    """Sort locations intelligently based on input language, search relevance, and distance"""
     # Calculate distances for all locations
     for loc in geo_data:
         loc['distance'] = calculate_distance(current_lat, current_lon, loc['lat'], loc['lon'])
@@ -133,8 +133,33 @@ def smart_location_sort(geo_data: list, original_location: str, current_lat: flo
         
         return korean_locs, is_korean_input
     else:
-        # Default sorting by distance only
-        geo_data.sort(key=lambda x: x['distance'])
+        # Sort by search relevance first, then distance
+        search_lower = original_location.lower()
+        
+        def relevance_score(loc):
+            city_lower = loc['name'].lower()
+            state_lower = loc.get('state', '').lower()
+            
+            # Exact city name match gets highest priority
+            if city_lower == search_lower:
+                return (0, loc['distance'])
+            
+            # City name starts with search term
+            if city_lower.startswith(search_lower):
+                return (1, loc['distance'])
+            
+            # Search term contains city name  
+            if search_lower in city_lower:
+                return (2, loc['distance'])
+            
+            # State name matches search term
+            if state_lower and (state_lower == search_lower or search_lower in state_lower):
+                return (3, loc['distance'])
+            
+            # Default: sort by distance only
+            return (4, loc['distance'])
+        
+        geo_data.sort(key=relevance_score)
         return geo_data, is_korean_input
 
 
@@ -635,6 +660,12 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
         
         # Display up to requested number of days
         day_count = 0
+        
+        # For English output, find the maximum date string length for consistent alignment
+        if lang != 'ko':
+            max_date_length = max(len(daily_forecasts[date_key]['date_str']) 
+                                for date_key in list(daily_forecasts.keys())[:days])
+        
         for date_key in sorted(daily_forecasts.keys()):
             if day_count >= days:
                 break
@@ -649,7 +680,8 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
             if lang == 'ko':
                 forecast_text += f"{day['date_str']:12} | 최고: {high_c:2}°C ({high_f:2}°F) | 최저: {low_c:2}°C ({low_f:2}°F) | {day['desc']}\n"
             else:
-                forecast_text += f"{day['date_str']:<17} | High: {high_f:2}°F ({high_c:2}°C) | Low: {low_f:2}°F ({low_c:2}°C) | {day['desc']}\n"
+                # Use dynamic padding based on actual date lengths and fixed width for temperatures
+                forecast_text += f"{day['date_str']:<{max_date_length}} | High: {high_f:3}°F ({high_c:2}°C) | Low: {low_f:3}°F ({low_c:2}°C) | {day['desc']}\n"
             day_count += 1
         
         return forecast_text
