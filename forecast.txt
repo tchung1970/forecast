@@ -1,0 +1,27 @@
+$ python forecast.py 
+Enter location (or press Enter for current location): Los Angeles
+
+Multiple Los Angeless found:
+1. Los Angeles, California, United States (best match)
+2. Los Angeles, Chiriquí, Panama
+3. Los Angeles, Sucre, Colombia
+
+Press Enter to choose the best match (1) or select other location (2-3): 
+
+3-day forecast for Los Angeles, California, United States
+=========================================================
+
+Thursday, Aug 21 | High: 90°F (32°C) | Low: 77°F (25°C) | Clear Sky
+Friday, Aug 22  | High: 95°F (35°C) | Low: 78°F (26°C) | Overcast Clouds
+Saturday, Aug 23 | High: 90°F (32°C) | Low: 78°F (25°C) | Clear Sky
+
+$ python forecast.py
+Enter location (or press Enter for current location): Seoul
+
+서울, 대한민국 3일 일기예보
+===========================
+
+8월 21일 목요일   | 최고: 33°C (92°F) | 최저: 26°C (78°F) | 맑음
+8월 22일 금요일   | 최고: 33°C (92°F) | 최저: 25°C (77°F) | 흐림
+8월 23일 토요일   | 최고: 34°C (94°F) | 최저: 26°C (78°F) | 구름 조금
+

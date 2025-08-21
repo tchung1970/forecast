@@ -40,19 +40,19 @@ A Python-based weather forecast application that provides weather forecasts usin
 
 ```bash
 # Interactive mode - prompts for location
-python3 forecast.py
+python forecast.py
 
 # Specific location
-python3 forecast.py "Los Angeles,CA,US"
+python forecast.py "Los Angeles,CA,US"
 
 # Different city (shows multiple options if ambiguous)
-python3 forecast.py "Seoul"
+python forecast.py "Seoul"
 
 # 3-day forecast (default)
-python3 forecast.py --days 3 "Seoul,KR"
+python forecast.py --days 3 "Seoul,KR"
 
 # Korean language forecast
-python3 forecast.py --lang ko "Seoul,KR"
+python forecast.py --lang ko "Seoul,KR"
 ```
 
 ## How It Works
@@ -70,7 +70,7 @@ When you search for a location, the application:
 
 **English Location Search:**
 ```
-$ python3 forecast.py
+$ python forecast.py
 Enter location (or press Enter for current location): Los Angeles
 
 Multiple Los Angeless found:
@@ -90,7 +90,7 @@ Saturday, Aug 23 | High: 90°F (32°C) | Low: 78°F (25°C) | Clear Sky
 
 **Korean Language Detection:**
 ```
-$ python3 forecast.py "서울"
+$ python forecast.py "서울"
 
 서울, 대한민국 3일 일기예보
 ===========================
@@ -102,7 +102,7 @@ $ python3 forecast.py "서울"
 
 **Korean Language Explicit:**
 ```
-$ python3 forecast.py --lang ko "Seoul,KR"
+$ python forecast.py --lang ko "Seoul,KR"
 
 서울, 대한민국 3일 일기예보
 ===========================

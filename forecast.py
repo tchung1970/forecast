@@ -678,10 +678,10 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  %(prog)s                              # Prompts for location
-  %(prog)s "Los Angeles,CA,US"          # Los Angeles weather  
-  %(prog)s "Seoul,KR" --days 5          # Seoul 5-day forecast
-  %(prog)s "Seoul,KR" --lang ko         # Seoul weather in Korean
+  python %(prog)s                              # Prompts for location
+  python %(prog)s "Los Angeles,CA,US"          # Los Angeles weather  
+  python %(prog)s "Seoul,KR" --days 5          # Seoul 5-day forecast
+  python %(prog)s "Seoul,KR" --lang ko         # Seoul weather in Korean
         """)
     
     parser.add_argument(

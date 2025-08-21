@@ -13,16 +13,16 @@ This is a Python-based weather forecast application that uses the OpenWeatherMap
 echo "OPENWEATHERMAP_API_KEY=your_api_key_here" >> ~/.env
 
 # Run the weather forecast script (prompts for location)
-python3 forecast.py
+python forecast.py
 
 # Get weather for a specific location
-python3 forecast.py "Los Angeles,CA,US"
+python forecast.py "Los Angeles,CA,US"
 
 # Get multi-day forecast (3 days default, 5 days maximum)
-python3 forecast.py --days 3 "Seoul,KR"
+python forecast.py --days 3 "Seoul,KR"
 
 # Get weather in Korean
-python3 forecast.py --lang ko "Seoul,KR"
+python forecast.py --lang ko "Seoul,KR"
 ```
 
 ## Architecture Overview
