@@ -24,9 +24,6 @@ python3 forecast.py --days 3 "Seoul,KR"
 # Get weather in a different language
 python3 forecast.py --lang ko "Seoul,KR"
 
-# Override API key via command line
-python3 forecast.py --api-key YOUR_KEY
-
 # Make script executable
 chmod +x forecast.py
 ```
@@ -53,7 +50,6 @@ The application integrates with OpenWeatherMap API:
 - Free plan limits: 60 API calls/minute, 1,000,000 calls/month
 - Includes: Current weather API, 3-hour forecast for 5 days API, Weather Maps, Air Pollution API, Geocoding API
 - API key can be provided via:
-  - Command line: `--api-key YOUR_KEY`
   - ~/.env file: `OPENWEATHERMAP_API_KEY=your_key`
   - Environment variable: `OPENWEATHERMAP_API_KEY`
 - Supports location-based queries in "city,state,country" format

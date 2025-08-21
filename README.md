@@ -35,8 +35,6 @@ A Python-based weather forecast application that provides 5-day weather forecast
    # Method 2: Set environment variable
    export OPENWEATHERMAP_API_KEY=your_api_key_here
    
-   # Method 3: Use command line flag
-   python3 forecast.py --api-key your_api_key_here
    ```
 
 3. **Make script executable** (optional):
