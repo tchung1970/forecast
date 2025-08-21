@@ -48,7 +48,7 @@ python3 forecast.py "Los Angeles,CA,US"
 # Different city (shows multiple options if ambiguous)
 python3 forecast.py "Seoul"
 
-# 5-day forecast
+# 5-day forecast (maximum supported)
 python3 forecast.py --days 5 "Seoul,KR"
 
 # Korean language forecast
