@@ -61,9 +61,6 @@ python3 forecast.py --days 3 "Tokyo,JP"
 
 # French language forecast
 python3 forecast.py --lang fr "Paris,FR"
-
-# Override API key
-python3 forecast.py --api-key YOUR_KEY "Berlin,DE"
 ```
 
 ## How It Works
