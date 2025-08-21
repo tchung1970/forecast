@@ -138,6 +138,18 @@ def smart_location_sort(geo_data: list, original_location: str, current_lat: flo
         return geo_data, is_korean_input
 
 
+def get_display_width(text: str) -> int:
+    """Calculate display width accounting for wide characters like Korean"""
+    width = 0
+    for char in text:
+        # Korean characters and other wide characters take 2 display positions
+        if '\u1100' <= char <= '\u11ff' or '\u3130' <= char <= '\u318f' or '\uac00' <= char <= '\ud7af':
+            width += 2
+        else:
+            width += 1
+    return width
+
+
 def format_date_korean(dt: datetime) -> str:
     """Format date in Korean"""
     korean_days = {
@@ -539,7 +551,7 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
         if lang == 'ko':
             header_text = f"{location_display} {days}일 일기예보"
             forecast_text = f"\n{header_text}\n"
-            forecast_text += "=" * len(header_text) + "\n\n"
+            forecast_text += "=" * get_display_width(header_text) + "\n\n"
         else:
             header_text = f"{days}-day forecast for {location_display}"
             forecast_text = f"\n{header_text}\n"
