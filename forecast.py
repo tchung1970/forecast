@@ -678,7 +678,7 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
             
             # Format output based on language
             if lang == 'ko':
-                forecast_text += f"{day['date_str']:12} | 최고: {high_c:2}°C ({high_f:2}°F) | 최저: {low_c:2}°C ({low_f:2}°F) | {day['desc']}\n"
+                forecast_text += f"{day['date_str']:12} | 최고: {high_c:2}°C ({high_f:3}°F) | 최저: {low_c:2}°C ({low_f:3}°F) | {day['desc']}\n"
             else:
                 # Use dynamic padding based on actual date lengths and fixed width for temperatures
                 forecast_text += f"{day['date_str']:<{max_date_length}} | High: {high_f:3}°F ({high_c:2}°C) | Low: {low_f:3}°F ({low_c:2}°C) | {day['desc']}\n"
