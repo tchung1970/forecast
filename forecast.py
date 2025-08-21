@@ -640,7 +640,7 @@ Examples:
     try:
         # Validate days parameter
         if args.days > 5:
-            print(f"Sorry, the maximum forecast length is 5 days due to OpenWeatherMap API limitations. You requested {args.days} days.")
+            print("Sorry, the maximum forecast length is 5 days due to OpenWeatherMap API limitations.")
             sys.exit(1)
         
         if args.days < 1:
