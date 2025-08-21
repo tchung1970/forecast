@@ -23,9 +23,6 @@ python3 forecast.py --days 5 "Seoul,KR"
 
 # Get weather in a different language
 python3 forecast.py --lang ko "Seoul,KR"
-
-# Make script executable
-chmod +x forecast.py
 ```
 
 ## Architecture Overview
