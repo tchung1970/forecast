@@ -36,9 +36,12 @@ chmod +x forecast.py
 - **forecast.py**: Main script containing weather fetching functionality and CLI interface
 - Uses Python's built-in `urllib` for HTTP requests to OpenWeatherMap API
 - Command-line argument parsing with `argparse`
-- Supports city,state,country location format
+- Supports city,state,country location format with intelligent geocoding
+- Interactive location selection when multiple matches found
+- IP geolocation fallback for current location detection
+- Distance-based sorting of location options (nearest first)
 - Error handling for network requests and invalid inputs
-- Clean text-based output format
+- Clean text-based output format with both Fahrenheit and Celsius
 
 ## API Integration
 
@@ -52,6 +55,8 @@ The application integrates with OpenWeatherMap API:
   - ~/.env file: `OPENWEATHERMAP_API_KEY=your_key`
   - Environment variable: `OPENWEATHERMAP_API_KEY`
 - Supports location-based queries in "city,state,country" format
+- Uses geocoding API for intelligent location matching and disambiguation
+- Reverse geocoding for coordinate-based lookups
 - Configurable forecast duration (up to 5 days)
 - Multi-language support
-- Imperial units (Fahrenheit) by default
+- Imperial units (Fahrenheit) by default with Celsius conversion
