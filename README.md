@@ -8,7 +8,7 @@ A Python-based weather forecast application that provides 5-day weather forecast
 - **Korean Language Detection**: Automatically prioritizes Korean locations when Korean characters are detected (e.g., "서울" → Seoul, South Korea)
 - **Interactive Location Selection**: When multiple cities match your search, displays options with intelligent "best match" sorting
 - **Intelligent Geocoding**: Uses OpenWeatherMap's geocoding API for accurate location matching
-- **Enhanced Country Display**: Shows full country names (e.g., "South Korea", "Pakistan") instead of codes
+- **Enhanced Country Display**: Shows full country names (e.g., "South Korea", "United States") instead of codes
 - **Multi-format Display**: Shows temperatures in both Fahrenheit and Celsius
 - **5-Day Forecasts**: Provides detailed daily high/low temperatures and weather conditions
 - **Multi-language Support**: Get forecasts in different languages
