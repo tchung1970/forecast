@@ -1,6 +1,6 @@
 # Weather Forecast
 
-A Python-based weather forecast application that provides up to 5-day weather forecasts using the OpenWeatherMap API with intelligent location selection and interactive user interface.
+A Python-based weather forecast application that provides weather forecasts using the OpenWeatherMap API with intelligent location selection and interactive user interface.
 
 ## Features
 
