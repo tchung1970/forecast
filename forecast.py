@@ -511,7 +511,7 @@ def get_weather(location: str = None, days: int = 5, lang: str = "en", api_key: 
         if lang == 'ko':
             korean_city = korean_cities.get(city_name, city_name)
             korean_country = korean_countries.get(country, country_full)
-            location_display = f"{korean_city}, {korean_country}"
+            location_display = f"{korean_city}{state_info}, {korean_country}"
         else:
             location_display = f"{city_name}{state_info}, {country_full}"
         coord_display = f"(Lat: {coords['lat']:.2f}, Lon: {coords['lon']:.2f})"
